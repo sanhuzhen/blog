@@ -167,25 +167,25 @@ index_site_info_top:
 # 頭圖的高度，例如: 300px/300em/300rem
 index_top_img_height:
 
-# 首頁的副標題設置
 subtitle:
   # 是否啟用副標題
   enable: true
   # 是否啟用打字機效果
   effect: true
   # 自定義 typed.js
-  # https://github.com/mattboldt/typed.js/#customization
   typed_option:
+  # 这里可以根据你的需求进行 typed.js 的自定义设置
   # 來源 - 調用第三方服務 API（僅限中文）
-  # 它將首先顯示來源，然後顯示副標題內容
   # 選擇: false/1/2/3
   # false - 禁用此功能
   # 1 - hitokoto.cn
   # 2 - yijuzhan.com
   # 3 - jinrishici.com
-  source: false
+  source: 1  # 选择你要使用的API服务，这里以 hitokoto.cn 为例
   # 如果關閉打字機效果，副標題將僅顯示 sub 的第一行內容
   sub:
+    - "欢迎来到我的博客"
+    - "Enjoy coding, enjoy life!"
 
 # 首頁文章佈局
 # 1: 行佈局
@@ -1019,16 +1019,16 @@ click_heart:
 # 鼠標點擊效果: 文字
 clickShowText:
   # 是否啟用文字效果
-  enable: false
+  enable: true
   text:
-  # - I
-  # - LOVE
-  # - YOU
+   - I
+   - LOVE
+   - YOU
   fontSize: 15px
   # 是否隨機顯示文字
   random: false
   # 是否在移動設備上啟用
-  mobile: false
+  mobile: true
 
 # --------------------------------------
 # 燈箱設置
