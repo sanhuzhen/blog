@@ -11,20 +11,21 @@ nav:
   fixed: false
 
 menu:
-# 首頁: / || fas fa-home
-# 列表||fas fa-list:
-#   音樂: /music/ || fas fa-music
-#   電影: /movies/ || fas fa-video
-
-# --------------------------------------
-# 代碼塊設置
-# --------------------------------------
+  Home: / || fas fa-home
+  Archives: /archives/ || fas fa-archive
+  Tags: /tags/ || fas fa-tags
+  Categories: /categories/ || fas fa-folder-open
+#  List||fas fa-list:
+#    Music: /music/ || fas fa-music
+#    Movie: /movies/ || fas fa-video
+  Link: /link/ || fas fa-link
+#  About: /about/ || fas fa-heart
 
 code_blocks:
   # 代碼塊主題: darker / pale night / light / ocean / false
   theme: light
   # 是否使用 Mac 風格
-  macStyle: false
+  macStyle: true
   # 代碼塊高度限制（單位: px）
   height_limit: false
   # 是否自動換行
@@ -44,6 +45,8 @@ code_blocks:
 # 格式:
 #   icon: 鏈接 || 描述 || 顏色
 social:
+  fab fa-github: https://github.com/sanhuzhen || Github || "#hdhfbb"
+  fas fa-envelope: mailto:sanhuzhen@gmail.com || Email || "#000000"
 
 # --------------------------------------
 # 圖片設置
@@ -55,7 +58,7 @@ favicon: /img/favicon.png
 # 頭像設置
 avatar:
   # 頭像圖片鏈接
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: /img/avatar.jpg
   # 是否啟用頭像效果
   effect: false
 
@@ -63,10 +66,10 @@ avatar:
 disable_top_img: false
 
 # 如果頁面未設置橫幅，則顯示默認的橫幅圖片
-default_top_img:
+default_top_img: https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=800
 
 # 主頁的橫幅圖片
-index_img:
+index_img: https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=800
 
 # 歸檔頁的橫幅圖片
 archive_img:
@@ -93,7 +96,7 @@ footer_img: false
 # 網站背景
 # 可以設置為顏色或圖片
 # 圖片格式: url(http://xxxxxx.com/xxx.jpg)
-background:
+background: url(https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=800)
 
 # 封面設置
 cover:
@@ -167,7 +170,7 @@ index_top_img_height:
 # 首頁的副標題設置
 subtitle:
   # 是否啟用副標題
-  enable: false
+  enable: true
   # 是否啟用打字機效果
   effect: true
   # 自定義 typed.js
@@ -265,7 +268,7 @@ related_post:
 # 1: “下一篇文章”將鏈接到舊文章
 # 2: “下一篇文章”將鏈接到新文章
 # false: 禁用分頁
-post_pagination: 1
+post_pagination: 2
 
 # 顯示文章過期通知
 noticeOutdate:
@@ -288,9 +291,9 @@ footer:
     # 是否啟用所有者顯示
     enable: true
     # 網站創建年份
-    since: 2019
+    since: 2024
   # 自定義文本
-  custom_text:
+  custom_text: Hi, welcome to my <a href="https://sanhuzhen.github.io/blog/">SanHuzhen</a>!
   # 主題和框架的版權聲明
   copyright: true
 
@@ -329,7 +332,7 @@ aside:
       # 按鈕文本
       text: Follow Me
       # 按鈕鏈接
-      link: https://github.com/xxxxxx
+      link: https://github.com/sanhuzhen
   card_announcement:
     # 是否顯示公告卡片
     enable: true
@@ -1079,7 +1082,7 @@ note:
   #  - modern    bs-callout 新 (v2-v3) 警告樣式。
   #  - flat      扁平提示框樣式，帶背景，如 Mozilla 或 StackOverflow。
   #  - disabled  禁用所有 Note 標籤的 CSS 樣式。
-  style: flat
+  style: simple
   # 是否顯示圖標
   icons: true
   # 邊框半徑
