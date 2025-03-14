@@ -82,7 +82,7 @@
                     "@type":"Person",
                     "name":"{{ author | safe }}"
                 },{% endif %}
-                "@context":"https://schema.org"
+                "@context":"https://schema.org/blog"
             }
         </script>
         {% endblock metatags %}
@@ -101,7 +101,7 @@
                 {% if config.extra.header_nav %}
                 <nav>
                     {% for nav_item in config.extra.header_nav %}
-                      <a href="{{ get_url(path=nav_item.url, trailing_slash=true) | safe }}" {% if nav_item.new_tab %}target="_blank" rel="noreferrer noopener"{% endif %}>
+                      <a href="{{ get_url(path='blog' ~ nav_item.url, trailing_slash=true) | safe }}" {% if nav_item.new_tab %}target="_blank" rel="noreferrer noopener"{% endif %}>
                         {{ nav_item.name }}
                       </a>
                     {% endfor %}
