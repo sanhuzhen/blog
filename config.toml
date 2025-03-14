@@ -25,12 +25,12 @@ author = "sanhuzhen"
 logo = "images/logo.png"
 list_pages = true
 header_nav = [
-    { name = "about", url = "about" },
+    { name = "about", url = "/about" },
     { name = "home", url = "/" },
-    { name = "archive", url = "posts" },
+    { name = "archive", url = "/posts" },
     # { name = "daily", url = "/daily" },
-    { name = "tags", url = "tags" },
-    { name = "categories", url = "categories" }
+    { name = "tags", url = "/tags" },
+    { name = "categories", url = "/categories" }
 ]
 footer_nav = [
     { name = "Github", url = "https://github.com/sanhuzhen"}
