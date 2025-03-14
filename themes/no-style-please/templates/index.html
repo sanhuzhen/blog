@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ section.content | safe }}
+
+{# recent_pages 自定义展示区域 #}
+{% if config.extra.recent_pages %}
+  <section class="recent-posts">
+    <ul class="post-list">
+      {% for item in config.extra.recent_pages %}
+          {% set section = get_section(path=item.section) %}
+          {% set recent_pages = section.pages | sort(attribute="date") | reverse | slice(end=item.limit) %}
+          {% for page in recent_pages %}
+            <li class="post-item">
+              <a href="{{ page.permalink | safe }}" class="post-title">
+                {% if page.date and not config.extra.no_list_date %}
+                  <span class="post-date">{{ page.date }}</span> -
+                {% endif %}
+                {{ page.title }}
+              </a>
+              {% if page.description %}
+                <p class="post-desc">{{ page.description }}</p>
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          {# 如果数量达到限制，显示一个查看更多链接 #}
+          {% if recent_pages | length >= item.limit %}
+            <li class="post-item">
+              <a href="{{ section.permalink | safe }}" class="post-title more-link">➡ more</a>
+            </li>
+          {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+{# 默认分页列表展示 #}
+{% if config.extra.list_pages %}
+  {% if paginator %}
+    {% set pages = paginator.pages | filter(attribute="date") | sort(attribute="date") | reverse %}
+  {% else %}
+    {% set pages = section.pages | filter(attribute="date") | sort(attribute="date") | reverse %}
+  {% endif %}
+
+  <ul class="post-list">
+    {% for page in pages %}
+      <li class="post-item">
+        <a href="{{ page.permalink | safe }}" class="post-title">
+          {% if page.date and not config.extra.no_list_date %}
+            <span class="post-date">{{ page.date }}</span> - 
+          {% endif %}
+          {{ page.title }}
+        </a>
+        {% if page.description %}
+          <p class="post-desc">{{ page.description }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator %}
+    <div class="pagination">
+      {% if paginator.previous %}
+        <a href="{{ paginator.first }}">&laquo; First</a>
+        <a href="{{ paginator.previous }}">&lsaquo; Previous</a>
+      {% endif %}
+
+      <span class="page-number">[{{ paginator.current_index }}/{{ paginator.number_pagers }}]</span>
+
+      {% if paginator.next %}
+        <a href="{{ paginator.next }}">Next &rsaquo;</a>
+        <a href="{{ paginator.last }}">Last &raquo;</a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% endblock content %}

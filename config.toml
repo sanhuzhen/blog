@@ -1,0 +1,40 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+title = "sanhuzhen's Blog"
+theme = "no-style-please"
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+default_language = "en"
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+taxonomies = [
+    { name = "tags" },
+    { name = "categories" }
+]
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+render_emoji = true
+
+[extra]
+# Put all your custom variables here
+author = "sanhuzhen"
+logo = "images/logo.png"
+list_pages = true
+header_nav = [
+    { name = "about", url = "/about" },
+    { name = "home", url = "/" },
+    { name = "archive", url = "/posts" },
+    # { name = "daily", url = "/daily" },
+    { name = "tags", url = "/tags" },
+    { name = "categories", url = "/categories" }
+]
+footer_nav = [
+    { name = "Github", url = "https://github.com/sanhuzhen"}
+]
+recent_pages = [
+    { section = "posts/_index.md", limit = 7 },
+]
