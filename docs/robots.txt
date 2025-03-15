@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://sanhuzhen.top/sitemap.xml
+Sitemap: https://blog.sanhuzhen.top/sitemap.xml
