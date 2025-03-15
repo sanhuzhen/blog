@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://sanhuzhen.github.io/blog/</loc>
+        <loc>https://sanhuzhen.top/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/about/</loc>
+        <loc>https://sanhuzhen.top/about/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/categories/</loc>
+        <loc>https://sanhuzhen.top/categories/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/categories/rust/</loc>
+        <loc>https://sanhuzhen.top/categories/rust/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/categories/za-wen/</loc>
+        <loc>https://sanhuzhen.top/categories/za-wen/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/daily/</loc>
+        <loc>https://sanhuzhen.top/daily/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/posts/</loc>
+        <loc>https://sanhuzhen.top/posts/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/posts/bo-ke-ban-jia/</loc>
+        <loc>https://sanhuzhen.top/posts/bo-ke-ban-jia/</loc>
         <lastmod>2025-03-13</lastmod>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/posts/page/1/</loc>
+        <loc>https://sanhuzhen.top/posts/page/1/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/posts/rustde-ji-chu-yu-fa/</loc>
+        <loc>https://sanhuzhen.top/posts/rustde-ji-chu-yu-fa/</loc>
         <lastmod>2024-11-01</lastmod>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/tags/</loc>
+        <loc>https://sanhuzhen.top/tags/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/tags/rust/</loc>
+        <loc>https://sanhuzhen.top/tags/rust/</loc>
     </url>
     <url>
-        <loc>https://sanhuzhen.github.io/blog/tags/za-wen/</loc>
+        <loc>https://sanhuzhen.top/tags/za-wen/</loc>
     </url>
 </urlset>
