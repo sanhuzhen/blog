@@ -10,6 +10,9 @@
         <loc>https://blog.sanhuzhen.top/categories/</loc>
     </url>
     <url>
+        <loc>https://blog.sanhuzhen.top/categories/android/</loc>
+    </url>
+    <url>
         <loc>https://blog.sanhuzhen.top/categories/rust/</loc>
     </url>
     <url>
@@ -26,6 +29,10 @@
         <lastmod>2025-03-13</lastmod>
     </url>
     <url>
+        <loc>https://blog.sanhuzhen.top/posts/jetpackde-shi-yong/</loc>
+        <lastmod>2025-03-26</lastmod>
+    </url>
+    <url>
         <loc>https://blog.sanhuzhen.top/posts/page/1/</loc>
     </url>
     <url>
@@ -34,6 +41,12 @@
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/tags/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/android/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/jetpack/</loc>
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/tags/rust/</loc>
