@@ -33,6 +33,7 @@ header_nav = [
     { name = "categories", url = "/categories" }
 ]
 footer_nav = [
+    { name = "RSS", url = "./atom.xml" },
     { name = "Github", url = "https://github.com/sanhuzhen"}
 ]
 recent_pages = [
