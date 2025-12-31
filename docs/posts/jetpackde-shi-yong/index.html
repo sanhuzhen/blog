@@ -107,7 +107,7 @@
 <p>那么，为什么要使用Jetpack呢？</p>
 <p>原因就是因为Android在发展过程中出现了许多框架来帮助开发者快速进行开发，但随着这些框架越来越多，导致了开发越来越碎片化，这时候，大哥Google看不下去了，所以其在Goole I/O 2018大会上推出了Android Jetpack。Jetpack可帮助开发者遵循最佳做法，减少样板代码并编写可在各种 Android 版本和设备中一致运行的代码，让开发者精力集中编写重要的代码。</p>
 <p>Jetpack主要包括4个方面，如下图所示，分别是架构（Architecture）、界面（UI）、行为 （Behavior）和基础（Foundation）。</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YzFmMDQxYzkxYmQ0MzdiNTU0ZTUwNGQ3YzRmMDQ1ZTNfWWRaZURxRWdsS3ZlWmlLdFlJOWU1U3FwUURNNUxoN05fVG9rZW46VEtLaGJHd01KbzVJZVJ4aUxXOGNPRDhSblBsXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/1.png" alt="img" /></p>
 <h1 id="lifecycle">Lifecycle</h1>
 <p>Lifecycle是很多Jetpack组件的基础，我们先来讲讲它。</p>
 <h2 id="shen-me-shi-lifecycle">什么是Lifecycle？</h2>
@@ -161,7 +161,7 @@
 </span><span>}
 </span></code></pre>
 <p>查看Log</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YzRhNTFlYjlmZTY2ZjNhMDE2ZjBjYTViN2I2M2Y5ZWRfU0o3NE05ZGV1cVhYb1RqQmxtcGhUTmEyWDlVWXpJdGpfVG9rZW46R05HWmJ4RnNCb1RGa2N4NXdvS2NDQ1ozbnNiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/2.png" alt="img" /></p>
 <h3 id="lifecycleeventobserverjie-kou"><code>LifecycleEventObserver</code>接口</h3>
 <pre data-lang="kotlin" style="background-color:#2b303b;color:#c0c5ce;" class="language-kotlin "><code class="language-kotlin" data-lang="kotlin"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">MyObserver2</span><span>: </span><span style="color:#a3be8c;">LifecycleEventObserver</span><span> {
 </span><span>    </span><span style="color:#b48ead;">override fun </span><span style="color:#8fa1b3;">onStateChanged</span><span>(source: LifecycleOwner, event: Lifecycle.Event) {
@@ -198,7 +198,7 @@
 </span><span>    }
 </span><span>}
 </span></code></pre>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MWM4OWY5OTVmMzFlYWVmYWI1MjMzMmE0MjEyYjQ0ZTFfZU1nQlFBc1Q5TW1BVjNVbHlMck1yQ1VNZzZvZnpxZFVfVG9rZW46RURlZmJSN3Nvb1RjU294M1VvemNoSEpnblFmXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/3.png" alt="img" /></p>
 <h2 id="lifecyclede-yuan-li">Lifecycle的原理</h2>
 <p>大家是否有这样的疑问，为什么Lifecycle可以监听生命周期？所以带着这样的疑问，我们就来讲讲其原理。</p>
 <p>Lifecycle整体上采用了观察者模式，提供了LifecycleOwner(被观察者)和LifecyleObserver(观察者)两个接口，通过这个其就可以对页面的生命周期进行监听。</p>
@@ -626,7 +626,7 @@
 </span><span>}
 </span></code></pre>
 <p>网上有张图，描述了事件与状态的变化</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNkNmNmNDU4ODRjYWQ0NjM3ZmQ0NmMwYjIzZjhjMmNfMXhiZWwwdWFWVTh0Mlg5WjlxRENkSFU2aEhCbWVIN0lfVG9rZW46WUxGUmJSYXhpb0tQeU94Snc2b2NETlA5blZmXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/4.png" alt="img" /></p>
 <h1 id="livedata">LiveData</h1>
 <h2 id="shen-me-shi-livedata">什么是LiveData？</h2>
 <p>官方定义：</p>
@@ -811,38 +811,38 @@
 </span></code></pre>
 <p>先进行检查，如果当前观察者不是活跃状态返回，否则会再次会检测一下观察者对应的owner，看其是否是活跃状态，如果不是，再次调用activeStateChanged方法，并传入false，其内部会再次判断。然后，在判断版本号，如果observer所持有的最新版本号大于等于当前的版本，则表示是最新版本，不需要分发了，否则，分发事件。</p>
 <p>到这里，逻辑应该通畅了许多。我们上面提到了版本号，这是在哪里改变的呢？答案就在setValue和postValue两个数据更新的方法里</p>
-<pre data-lang="typescript" style="background-color:#2b303b;color:#c0c5ce;" class="language-typescript "><code class="language-typescript" data-lang="typescript"><span>@</span><span style="color:#bf616a;">MainThread
-</span><span style="color:#bf616a;">protected </span><span>void </span><span style="color:#8fa1b3;">setValue</span><span>(</span><span style="color:#bf616a;">T value</span><span>) {
-</span><span>    </span><span style="color:#8fa1b3;">assertMainThread</span><span>(&quot;</span><span style="color:#a3be8c;">setValue</span><span>&quot;);
-</span><span>    </span><span style="color:#bf616a;">mVersion</span><span>++;
-</span><span>    </span><span style="color:#bf616a;">mData </span><span>= </span><span style="color:#bf616a;">value</span><span>;
-</span><span>    </span><span style="color:#8fa1b3;">dispatchingValue</span><span>(</span><span style="color:#d08770;">null</span><span>);
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span>@</span><span style="color:#bf616a;">MainThread
+</span><span style="color:#b48ead;">protected</span><span> void </span><span style="color:#bf616a;">setValue</span><span>(</span><span style="color:#ebcb8b;">T</span><span> value) {
+</span><span>    </span><span style="color:#bf616a;">assertMainThread</span><span>(&quot;</span><span style="color:#a3be8c;">setValue</span><span>&quot;);
+</span><span>    mVersion++;
+</span><span>    mData = value;
+</span><span>    </span><span style="color:#bf616a;">dispatchingValue</span><span>(</span><span style="color:#d08770;">null</span><span>);
 </span><span>}
 </span><span>
-</span><span style="color:#bf616a;">protected </span><span>void </span><span style="color:#8fa1b3;">postValue</span><span>(</span><span style="color:#bf616a;">T value</span><span>) {
-</span><span>    </span><span style="color:#bf616a;">boolean postTask</span><span>;
-</span><span>    </span><span style="color:#8fa1b3;">synchronized </span><span>(</span><span style="color:#bf616a;">mDataLock</span><span>) {
-</span><span>        </span><span style="color:#bf616a;">postTask </span><span>= </span><span style="color:#bf616a;">mPendingData </span><span>== </span><span style="color:#bf616a;">NOT_SET</span><span>;
-</span><span>        </span><span style="color:#bf616a;">mPendingData </span><span>= </span><span style="color:#bf616a;">value</span><span>;
+</span><span style="color:#b48ead;">protected</span><span> void </span><span style="color:#bf616a;">postValue</span><span>(</span><span style="color:#ebcb8b;">T</span><span> value) {
+</span><span>    </span><span style="color:#b48ead;">boolean</span><span> postTask;
+</span><span>    </span><span style="color:#b48ead;">synchronized </span><span>(mDataLock) {
+</span><span>        postTask = mPendingData == </span><span style="color:#d08770;">NOT_SET</span><span>;
+</span><span>        mPendingData = value;
 </span><span>    }
-</span><span>    </span><span style="color:#b48ead;">if </span><span>(!</span><span style="color:#bf616a;">postTask</span><span>) {
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(!postTask) {
 </span><span>        </span><span style="color:#b48ead;">return</span><span>;
 </span><span>    }
 </span><span>    </span><span style="color:#65737e;">//抛到主线程
-</span><span>    </span><span style="color:#bf616a;">ArchTaskExecutor</span><span>.</span><span style="color:#8fa1b3;">getInstance</span><span>().</span><span style="color:#8fa1b3;">postToMainThread</span><span>(</span><span style="color:#bf616a;">mPostValueRunnable</span><span>);
+</span><span>    </span><span style="color:#ebcb8b;">ArchTaskExecutor</span><span>.</span><span style="color:#bf616a;">getInstance</span><span>().</span><span style="color:#bf616a;">postToMainThread</span><span>(mPostValueRunnable);
 </span><span>}
-</span><span style="color:#bf616a;">private final Runnable mPostValueRunnable </span><span>= new Runnable() {
-</span><span>    @</span><span style="color:#8fa1b3;">SuppressWarnings</span><span>(&quot;</span><span style="color:#a3be8c;">unchecked</span><span>&quot;)
-</span><span>    @</span><span style="color:#bf616a;">Override
-</span><span>    </span><span style="color:#bf616a;">public </span><span>void </span><span style="color:#8fa1b3;">run</span><span>() {
-</span><span>        </span><span style="color:#ebcb8b;">Object </span><span style="color:#bf616a;">newValue</span><span>;
-</span><span>        </span><span style="color:#8fa1b3;">synchronized </span><span>(</span><span style="color:#bf616a;">mDataLock</span><span>) {
-</span><span>            </span><span style="color:#bf616a;">newValue </span><span>= </span><span style="color:#bf616a;">mPendingData</span><span>;
-</span><span>            </span><span style="color:#bf616a;">mPendingData </span><span>= </span><span style="color:#bf616a;">NOT_SET</span><span>;
-</span><span>        }
-</span><span>        </span><span style="color:#8fa1b3;">setValue</span><span>((</span><span style="color:#bf616a;">T</span><span>) </span><span style="color:#bf616a;">newValue</span><span>);
-</span><span>    }
-</span><span>};
+</span><span style="color:#b48ead;">private final </span><span style="color:#ebcb8b;">Runnable</span><span> mPostValueRunnable = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">Runnable</span><span>() </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">    @</span><span style="color:#bf616a;">SuppressWarnings</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">unchecked</span><span>&quot;</span><span style="color:#eff1f5;">)
+</span><span style="color:#eff1f5;">    @</span><span style="color:#bf616a;">Override
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">run</span><span style="color:#eff1f5;">() {
+</span><span style="color:#eff1f5;">        </span><span style="color:#ebcb8b;">Object</span><span style="color:#eff1f5;"> newValue;
+</span><span style="color:#eff1f5;">        </span><span style="color:#b48ead;">synchronized </span><span style="color:#eff1f5;">(mDataLock) {
+</span><span style="color:#eff1f5;">            newValue </span><span>=</span><span style="color:#eff1f5;"> mPendingData;
+</span><span style="color:#eff1f5;">            mPendingData </span><span>= </span><span style="color:#d08770;">NOT_SET</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">        }
+</span><span style="color:#eff1f5;">        </span><span style="color:#bf616a;">setValue</span><span style="color:#eff1f5;">((</span><span style="color:#ebcb8b;">T</span><span style="color:#eff1f5;">) newValue);
+</span><span style="color:#eff1f5;">    }
+</span><span style="color:#eff1f5;">}</span><span>;
 </span></code></pre>
 <p>可以看到在setValue方法中有一个<code>mVersion++</code>，然后调用了<code>dispatchingValue(null)</code>方法，及上面提到的空的情况，所以一切都明了了。而postValue一样最后会调用setValue方法，只不过它用于在子线程中更新数据。</p>
 <p>到这，关于LiveData的源码分析就到这，简单来说，就是LivaData通过observe()添加与LifecycleOwner绑定的观察者；观察者变为活跃时回调最新的数据；使用setValue()、postValue()更新数据时会通知回调所有的观察者。</p>
@@ -853,7 +853,7 @@
 <h2 id="viewmodelchu-xian-de-bei-jing">ViewModel出现的背景</h2>
 <p>当我们的activity或fragment发生意外重构了（如屏幕旋转等），我们数据还会有吗？</p>
 <p>答案是否定的，这个时候，viewmodel就发挥出用处了，原因就在于viewmodel的生命周期比activity的更长。</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmE5OTE5OTliNTc2Zjk4MjZmNWI2NjA0NjdiNDkwZDRfamlVSUV5UUliT0JyelFsazFxUnpGa1lCNW5xYkkxU0pfVG9rZW46VEZ0ZmJ1VVlUb0lJTlR4aUhMaWNQMEVIbnN6XzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/5.png" alt="img" /></p>
 <h2 id="viewmodelde-shi-yong">ViewModel的使用</h2>
 <h3 id="chuang-jian-viewmodel">创建ViewModel</h3>
 <pre data-lang="kotlin" style="background-color:#2b303b;color:#c0c5ce;" class="language-kotlin "><code class="language-kotlin" data-lang="kotlin"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">TestViewmodel </span><span>: </span><span style="color:#a3be8c;">ViewModel</span><span>() {
@@ -1206,9 +1206,9 @@
 <ol>
 <li>来到layout文件，将鼠标放到根布局上，按Alt和Enter键，点击**<code>Convert to data binding layout</code>**</li>
 </ol>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MjIxM2E3YjE5Mjc3OWNlYzQyODQ3MmEzZDJlYzNlMDVfVkU0TXVqQ3c2WEpiRDFic0ZRd1NVMXlvRlRHaDlxSWJfVG9rZW46UEJCTWJVaGJBb2pvc0p4QThramNISWt5bkNiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/6.png" alt="img" /></p>
 <p>生成之后的文件</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YmZjZmIxMDQ5MGZiMTIwZGJjNmEzNjk2OGRlODdjZTBfZzBDeVp5R25LUFdZVjJkbHd3M3RmdlFHUTJvNDZzVVBfVG9rZW46RUt5QmJ0MmU2b3h6ZWp4amtra2M2dGdQbmpiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/7.png" alt="img" /></p>
 <p>接下来，在data标签中添加属性，并将TextView指向该属性</p>
 <pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;?</span><span style="color:#bf616a;">xml </span><span style="color:#d08770;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0</span><span>&quot; </span><span style="color:#d08770;">encoding</span><span>=&quot;</span><span style="color:#a3be8c;">utf-8</span><span>&quot;?&gt;
 </span><span>&lt;</span><span style="color:#bf616a;">layout </span><span style="color:#d08770;">xmlns:android</span><span>=&quot;</span><span style="color:#a3be8c;">http://schemas.android.com/apk/res/android</span><span>&quot;&gt;
@@ -1290,13 +1290,13 @@
 <ol>
 <li>创建Navigation Graph，新建<code>res/navigation</code>目录，依次选中res文件夹-&gt;New-&gt;Android Resource File</li>
 </ol>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NzA4MDU4YmFhNGUxZWMxYzM2MmJhZTEzMjhlZDFjMGFfdVQ1MFFsS3Y5aHBHaXNOS010NEpEQW1UeElSMXMzS3BfVG9rZW46UW5DZWJvWVlib1o2emt4dEZYYWMxTGt3blhiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NzI5M2YzMTMzMmMxN2I4OWVlZjQwYTgzNmIxNjIxNTJfWVZETEcwWVRWRGtKaGlUMklTYngyY0ExSERuenBJVDZfVG9rZW46UlI1UWJWa24wb1BINmN4MVZUZ2MyUE1jblVoXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/8.png" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/9.png" alt="img" /></p>
 <p>Resource type选择navigation。</p>
 <ol>
 <li>然后新建一个<code>navigation</code>的<code>resource</code>文件</li>
 </ol>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NWU5YTFkZGJmMmQ1ZTIyMDViZWVhZjNmZTc3NWJkZjlfekhBdVQ3N01JZnNabEJqQ0c5dHZTR2JQWkR1OXQ2bWJfVG9rZW46SzR6cGIwWGI3b1psNUV4NVRETGNvbmFnbkJjXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/10.png" alt="img" /></p>
 <ol>
 <li>向其中添加我们的Fragment（这里准备了三个HomeFragment，BlankFragment，MineFragment）</li>
 </ol>
@@ -1327,7 +1327,7 @@
 </span><span>&lt;/</span><span style="color:#bf616a;">navigation</span><span>&gt;
 </span></code></pre>
 <p>加完之后，就可以用as进行可视化操作，实现不同fragment之间的跳转路径</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=OTZjM2I0MGIxZjVjYTMxMTdjMmEyODRmM2FjODRiZjNfRWpNM05TN0tlWFBDZVNsODBMaWVXUEhWZ0JranhWSVZfVG9rZW46RjZaTGJnTjVub1ByanR4OGVjZWNnZEpybkFkXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/11.png" alt="img" /></p>
 <p>之后可以看到xml文件中加了一点东西</p>
 <pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span>&lt;fragment
 </span><span>    </span><span style="color:#bf616a;">android:id</span><span>=&quot;</span><span style="color:#a3be8c;">@+id/fragment_home</span><span>&quot;
@@ -1544,7 +1544,7 @@
 </span><span>}
 </span></code></pre>
 <p>通过懒加载创造数据库实例，然后就可以用Dao去处理相关数据</p>
-<p><img src="https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MTk4NTQ1NDQ2YTQyZGVkMjU1ZGQyOWUzZTA2MTVlOTlfaHJZQ0ZrczhZbGdtS0hPc2kxbnlJVU1hckVPUUNza21fVG9rZW46RWRJQWI0WVlob25adnF4c2N5OGM2eEtRbkllXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA" alt="img" /></p>
+<p><img src="/images/Jetpack%E7%9A%84%E4%BD%BF%E7%94%A8/12.png" alt="img" /></p>
 <p>除了上述方法，我们也可以在AppDatabase里封装实例化数据库的代码</p>
 <pre data-lang="kotlin" style="background-color:#2b303b;color:#c0c5ce;" class="language-kotlin "><code class="language-kotlin" data-lang="kotlin"><span style="color:#b48ead;">companion object</span><span> {
 </span><span>    </span><span style="color:#b48ead;">private</span><span> lateinit </span><span style="color:#b48ead;">var </span><span>INSTANCE: AppDataBase

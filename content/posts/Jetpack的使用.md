@@ -19,7 +19,7 @@ taxonomies:
 
  Jetpack主要包括4个方面，如下图所示，分别是架构（Architecture）、界面（UI）、行为 （Behavior）和基础（Foundation）。
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YzFmMDQxYzkxYmQ0MzdiNTU0ZTUwNGQ3YzRmMDQ1ZTNfWWRaZURxRWdsS3ZlWmlLdFlJOWU1U3FwUURNNUxoN05fVG9rZW46VEtLaGJHd01KbzVJZVJ4aUxXOGNPRDhSblBsXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/1.png)
 
 # Lifecycle
 
@@ -87,7 +87,7 @@ class LifecycleActivity: AppCompatActivity() {
 
 查看Log
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YzRhNTFlYjlmZTY2ZjNhMDE2ZjBjYTViN2I2M2Y5ZWRfU0o3NE05ZGV1cVhYb1RqQmxtcGhUTmEyWDlVWXpJdGpfVG9rZW46R05HWmJ4RnNCb1RGa2N4NXdvS2NDQ1ozbnNiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/2.png)
 
 ### `LifecycleEventObserver`接口
 
@@ -131,7 +131,7 @@ class LifecycleActivity: AppCompatActivity() {
 }
 ```
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MWM4OWY5OTVmMzFlYWVmYWI1MjMzMmE0MjEyYjQ0ZTFfZU1nQlFBc1Q5TW1BVjNVbHlMck1yQ1VNZzZvZnpxZFVfVG9rZW46RURlZmJSN3Nvb1RjU294M1VvemNoSEpnblFmXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/3.png)
 
 ## Lifecycle的原理
 
@@ -627,7 +627,7 @@ public fun downFrom(state: State): Event? {
 
 网上有张图，描述了事件与状态的变化
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNkNmNmNDU4ODRjYWQ0NjM3ZmQ0NmMwYjIzZjhjMmNfMXhiZWwwdWFWVTh0Mlg5WjlxRENkSFU2aEhCbWVIN0lfVG9rZW46WUxGUmJSYXhpb0tQeU94Snc2b2NETlA5blZmXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/4.png)
 
 # LiveData
 
@@ -841,7 +841,7 @@ private void considerNotify(ObserverWrapper observer) {
 
 到这里，逻辑应该通畅了许多。我们上面提到了版本号，这是在哪里改变的呢？答案就在setValue和postValue两个数据更新的方法里
 
-```typescript
+```java
 @MainThread
 protected void setValue(T value) {
     assertMainThread("setValue");
@@ -894,7 +894,7 @@ ViewModel，意为 视图模型，即 **为界面准备数据的模型**。
 
 答案是否定的，这个时候，viewmodel就发挥出用处了，原因就在于viewmodel的生命周期比activity的更长。
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmE5OTE5OTliNTc2Zjk4MjZmNWI2NjA0NjdiNDkwZDRfamlVSUV5UUliT0JyelFsazFxUnpGa1lCNW5xYkkxU0pfVG9rZW46VEZ0ZmJ1VVlUb0lJTlR4aUhMaWNQMEVIbnN6XzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/5.png)
 
 ## ViewModel的使用
 
@@ -1324,11 +1324,11 @@ class DatabindingActivity : AppCompatActivity() {
 
 1. 来到layout文件，将鼠标放到根布局上，按Alt和Enter键，点击**`Convert to data binding layout`**
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MjIxM2E3YjE5Mjc3OWNlYzQyODQ3MmEzZDJlYzNlMDVfVkU0TXVqQ3c2WEpiRDFic0ZRd1NVMXlvRlRHaDlxSWJfVG9rZW46UEJCTWJVaGJBb2pvc0p4QThramNISWt5bkNiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/6.png)
 
 生成之后的文件
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=YmZjZmIxMDQ5MGZiMTIwZGJjNmEzNjk2OGRlODdjZTBfZzBDeVp5R25LUFdZVjJkbHd3M3RmdlFHUTJvNDZzVVBfVG9rZW46RUt5QmJ0MmU2b3h6ZWp4amtra2M2dGdQbmpiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/7.png)
 
 接下来，在data标签中添加属性，并将TextView指向该属性
 
@@ -1427,15 +1427,15 @@ ok，认识完了之后，我们来学习一下用法
 
 1. 创建Navigation Graph，新建`res/navigation`目录，依次选中res文件夹->New->Android Resource File
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NzA4MDU4YmFhNGUxZWMxYzM2MmJhZTEzMjhlZDFjMGFfdVQ1MFFsS3Y5aHBHaXNOS010NEpEQW1UeElSMXMzS3BfVG9rZW46UW5DZWJvWVlib1o2emt4dEZYYWMxTGt3blhiXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/8.png)
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NzI5M2YzMTMzMmMxN2I4OWVlZjQwYTgzNmIxNjIxNTJfWVZETEcwWVRWRGtKaGlUMklTYngyY0ExSERuenBJVDZfVG9rZW46UlI1UWJWa24wb1BINmN4MVZUZ2MyUE1jblVoXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/9.png)
 
 Resource type选择navigation。
 
 1. 然后新建一个`navigation`的`resource`文件
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=NWU5YTFkZGJmMmQ1ZTIyMDViZWVhZjNmZTc3NWJkZjlfekhBdVQ3N01JZnNabEJqQ0c5dHZTR2JQWkR1OXQ2bWJfVG9rZW46SzR6cGIwWGI3b1psNUV4NVRETGNvbmFnbkJjXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/10.png)
 
 1. 向其中添加我们的Fragment（这里准备了三个HomeFragment，BlankFragment，MineFragment）
 
@@ -1469,7 +1469,7 @@ Resource type选择navigation。
 
 加完之后，就可以用as进行可视化操作，实现不同fragment之间的跳转路径
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=OTZjM2I0MGIxZjVjYTMxMTdjMmEyODRmM2FjODRiZjNfRWpNM05TN0tlWFBDZVNsODBMaWVXUEhWZ0JranhWSVZfVG9rZW46RjZaTGJnTjVub1ByanR4OGVjZWNnZEpybkFkXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/11.png)
 
 之后可以看到xml文件中加了一点东西
 
@@ -1735,7 +1735,7 @@ class RoomActivity : AppCompatActivity() {
 
 通过懒加载创造数据库实例，然后就可以用Dao去处理相关数据
 
-![img](https://redrock.feishu.cn/space/api/box/stream/download/asynccode/?code=MTk4NTQ1NDQ2YTQyZGVkMjU1ZGQyOWUzZTA2MTVlOTlfaHJZQ0ZrczhZbGdtS0hPc2kxbnlJVU1hckVPUUNza21fVG9rZW46RWRJQWI0WVlob25adnF4c2N5OGM2eEtRbkllXzE3NDcyMDE5OTE6MTc0NzIwNTU5MV9WNA)
+![img](/images/Jetpack的使用/12.png)
 
 除了上述方法，我们也可以在AppDatabase里封装实例化数据库的代码
 

@@ -13,6 +13,9 @@
         <loc>https://blog.sanhuzhen.top/categories/android/</loc>
     </url>
     <url>
+        <loc>https://blog.sanhuzhen.top/categories/nian-du-zong-jie/</loc>
+    </url>
+    <url>
         <loc>https://blog.sanhuzhen.top/categories/rust/</loc>
     </url>
     <url>
@@ -23,6 +26,10 @@
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/posts/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/posts/2025nian-zong-jie/</loc>
+        <lastmod>2025-12-31</lastmod>
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/posts/bo-ke-ban-jia/</loc>
@@ -47,6 +54,9 @@
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/tags/jetpack/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/nian-du-zong-jie/</loc>
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/tags/rust/</loc>
