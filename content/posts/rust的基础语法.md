@@ -1,10 +1,14 @@
----
-title: rust的基本语法
-date: 2024-11-01
-taxonomies:
-  categories: ["Rust"]
-  tags: ["Rust"]
----
++++
+title = "rust的基本语法"
+description = "rust的基本语法"
+date = 2024-11-01
+
+[taxonomies]
+tags = ["Rust"]
+
+[extra]
+toc = true
++++
 打印 ` Hello,World!`
 
 ```rust

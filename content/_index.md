@@ -1,6 +1,4 @@
----
-description: "index page"
----
-Happy everyday!
-
-## Recent Posts
++++
+title = "Home"
+insert_anchor_links = "right"
++++

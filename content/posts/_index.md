@@ -1,7 +1,12 @@
----
-title: "Posts"
-sort_by: "date"  # sort by date is enable while using archived.html template
-paginate_by: 13
-extra:
-  archived: true # archived by years
----
++++
+title = "Posts"
+sort_by = "date"
+template = "section.html"
+page_template = "page.html"
+paginate_by = 5
+
+[extra]
+pinned_posts = [
+    "posts/2025年总结.md",
+]
++++
