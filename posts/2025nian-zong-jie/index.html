@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2025年总结 | sanhuzhen&#x27;s blog</title>
+
+  
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Serif+SC:wght@200..900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css' />
+  <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/syst/dist/SourceHanSerifCN/result.css' />
+  <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.10/mmenu.min.css">
+  <link rel="stylesheet" href="https://blog.sanhuzhen.top/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Unwrap code blocks for MathJax
+          // 1. Display Math (```math-display ... ```)
+          document.querySelectorAll('code.language-math-display').forEach(el => {
+              const pre = el.parentElement;
+              if (pre.tagName === 'PRE') {
+                  const math = el.textContent.trim();
+                  const div = document.createElement('div');
+                  div.textContent = math;
+                  pre.replaceWith(div);
+              }
+          });
+
+          // 2. Inline Math (`$ ... $`)
+          document.querySelectorAll('code').forEach(el => {
+              if (el.classList.contains('language-math-display')) return;
+              if (el.parentElement.tagName === 'PRE') return;
+
+              const text = el.textContent.trim();
+              // Check if it looks like math: $...$
+              if (text.startsWith('$') && text.endsWith('$') && !text.startsWith('$$')) {
+                  const span = document.createElement('span');
+                  span.textContent = text;
+                  el.replaceWith(span);
+              }
+          });
+          
+          // Trigger MathJax to process the new elements
+          if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+              MathJax.typesetPromise();
+          }
+      });
+  </script>
+  
+
+  
+<!-- Primary Meta Tags -->
+ 
+<meta
+  name="description"
+  content="2025年总结"
+/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="2025年总结 | sanhuzhen&#x27;s blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.sanhuzhen.top/posts/2025nian-zong-jie/" />
+
+<meta property="article:published_time" content="2025-12-31" />
+<meta property="article:modified_time" content="2025-12-31" />
+
+<meta property="article:section" content="posts" />
+<!--
+  
+    
+      
+        <meta property="article:tag" content="年度总结">
+      
+    
+  
+-->
+
+
+</head>
+
+<body class="body-block">
+  <div id="sidebar-mask" onclick="toggleSidebar()"></div>
+  
+  <div id="sidebar" class="">
+    <div class="logo-title">
+      <div class="title-inner">
+        
+        <div class="avatar">
+          <img src="https://blog.sanhuzhen.top/images/logo.png" alt="avatar">
+        </div>
+        
+        <div class="title">
+          <h3><a href="https://blog.sanhuzhen.top/">sanhuzhen&#x27;s blog</a></h3>
+          <div class="description">
+            <p>sanhuzhen&#x27;s blog</p>
+          </div>
+        </div>
+      </div>
+      <ul class="social-links">
+        
+        <li>
+          <a href="https://github.com/sanhuzhen" aria-label="Github">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a href="sanhuzhen@foxmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a href="/atom.xml" aria-label="Rss">
+            <i class="fas fa-rss"></i>
+          </a>
+        </li>
+        
+      </ul>
+      <div class="sidebar-action">
+        <a href="https://blog.sanhuzhen.top/about/">About Me</a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="https://blog.sanhuzhen.top/">Home</a>
+        <a href="https://blog.sanhuzhen.top/posts/">Posts</a>
+        <a href="https://blog.sanhuzhen.top/archive/">Archives</a>
+        <a href="https://blog.sanhuzhen.top/tags/">Categories</a>
+        <a href="https://blog.sanhuzhen.top/links/">Links</a>
+      </nav>
+    </div>
+  </div>
+  
+
+  <div id="main">
+    
+    <div class="page-top animated fadeInDown">
+      <nav class="nav">
+        <a href="https://blog.sanhuzhen.top/">Home</a>
+        <a href="https://blog.sanhuzhen.top/posts/" class="active">Posts</a>
+        <a href="https://blog.sanhuzhen.top/about/" >About</a>
+        <a href="https://blog.sanhuzhen.top/archive/" >Archives</a>
+        <a href="https://blog.sanhuzhen.top/tags/" >Categories</a>
+        <a href="https://blog.sanhuzhen.top/links/" >Links</a>
+      </nav>
+      <div class="information">
+        <div class="back_btn">
+          <a onclick="window.history.go(-1)" aria-label="Go back"><i class="fas fa-chevron-left"></i></a>
+        </div>
+        <div class="theme_btn">
+          <a onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon" id="theme-icon"></i></a>
+        </div>
+        <div class="feed_btn">
+          <a class="feed-icon" aria-label="RSS Feed"><i class="fas fa-rss"></i></a>
+          <div class="feed-dropdown">
+            <a href="https://blog.sanhuzhen.top/atom.xml" target="_blank">Atom</a>
+            <a href="https://blog.sanhuzhen.top/rss.xml" target="_blank">RSS</a>
+          </div>
+        </div>
+        <div class="avatar_btn">
+          <a onclick="toggleSidebar()" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="autopagerize_page_element">
+      <div class="content animated fadeIn ">
+         
+
+<article class="content-article">
+  <main class="article-content">
+    <div class="article-intro-container">
+        <div class="intro-header">
+            <h1 class="heading">2025年总结</h1>
+            <div class="meta-line">
+                
+                <span class="date">Dec. 31, 2025</span>
+                
+                
+                
+                <span class="separator">/</span>
+                <span class="tags">
+                
+                <a href="https://blog.sanhuzhen.top/tags/nian-du-zong-jie/">#年度总结</a>
+                
+                </span>
+                
+            </div>
+        </div>
+
+        <div class="intro-body">
+            
+            <div class="intro-abstract">
+                <div class="abstract-title">ABSTRACT</div>
+                <p class="description">2025年总结</p>
+            </div>
+            
+
+            
+            <details class="intro-toc">
+                <summary class="toc-title">CONTENTS</summary>
+                <div class="toc-wrapper">
+                <ul class="toc-list">
+                    <li class="toc-root">
+                        <a href="#" class="active-toc">2025年总结</a>
+                        
+                        <ul>
+                            
+                            <li>
+                                <a href="https://blog.sanhuzhen.top/posts/2025nian-zong-jie/#shi-xi">实习</a>
+                                
+                            </li>
+                            
+                            <li>
+                                <a href="https://blog.sanhuzhen.top/posts/2025nian-zong-jie/#lv-you">旅游</a>
+                                
+                            </li>
+                            
+                            <li>
+                                <a href="https://blog.sanhuzhen.top/posts/2025nian-zong-jie/#wei-lai">未来</a>
+                                
+                            </li>
+                            
+                        </ul>
+                        
+                    </li>
+                </ul>
+                </div>
+            </details>
+            
+        </div>
+    </div>
+    
+    <p>​   哈哈，想起来我还有个博客了，同时今年也发生了不少事，就写一写我的第一篇年度总结吧。</p>
+<h2 id="shi-xi">实习</h2>
+<p>​	首当其冲的应该就是实习这件事了，今年总共在两家公司待过——TME和小米，先谈谈TME吧，算是我的第一段实习。</p>
+<p>​	对于TME的话，我应该是八月中旬拿到offer的，然后就义无反顾前往了牛马城市——深圳，但没待到一个月就跑路了。进去前充满了期待，毕竟第一次嘛，还有着腾讯的buff在，但进去之后，感觉到有点不对劲了，首先，TME对于日常实习生待遇还是有点差的，同时工卡方面碰巧过去的时候，外面的照相机坏了，导致我刚去的一周一直没有拿到工卡，进去只能向正职申请门禁权限，当然，这几点还是不能促使我跑路的想法，最令我想跑路的是公司的日常实习生接触不到业务方面，导致自己在大厂流程规范根本学不到一点东西，同时也不能在代码里面进行实操，哈哈，被称为客服小游了，还有组内的氛围比较差吧，所以我在不到一个月的时间内提交了辞职，火速跑路了。</p>
+<p>​	回到学校后，想再找一段实习经历，毕竟TME这一段我只混到了个title，而真要在面试中说的话，我感觉啥也说不出来。九月本来想歇一个月的，但滴滴那边不知道什么时候投的找到我了，就面了一下，结果二面挂了，非常可惜吧。后面在十月份的时候，我面了我现在小米的这个组，一面很顺利的通过了，但不知后面为啥鸽了我（进来后问了下，告诉我说太忙了😂），在十一月底的时候通过xhs知道了可以发邮件给小米hr，后面成功约上了二面，最后也十分幸运地通过了，也在十二月份入职了，到现在也有半个月了，进来给了我一个大惊喜，左边leader，右边mentor，嘻嘻。组内氛围也比较好，平时不懂的都可以去问，可惜小米还是太有性价比了，不然还真想在这里转正，当然，走一步看一步吧，不能把路走死了，在现在这个互联网氛围下。</p>
+<p>​	最后谈谈自己对于实习的看法吧，实习的话我觉得确实可以让一个人成熟很多，不管是TME还是小米，都是人生中的一段成长吧，还有就是走出了校园，进入了社会，第一次租房，第一次体会到当社畜的感觉。当然最后感谢一下我的辅导员，感谢他不是那么古板吧，以请假的名义放我们出来。</p>
+<h2 id="lv-you">旅游</h2>
+<p>​	当然，这一年也去了不少地方，第一个就是云南。</p>
+<p>​	暑假七月份的时候去的，总共就去了两个城市——昆明和大理。只能说不愧是旅游胜地，云南风景还是有点东西的，很美，直接上图吧</p>
+<img src="/images/2025年总结/1.jpg" alt="image-20251231220816894" style="zoom:25%;" />
+<img src="/images/2025年总结/2.jpg" alt="image-20251231220904493" style="zoom:25%;" />
+<img src="/images/2025年总结/3.jpg" alt="image-20251231220946104" style="zoom:25%;" />
+<img src="/images/2025年总结/4.jpg" alt="image-20251231220958403" style="zoom:25%;" />
+<img src="/images/2025年总结/5.jpg" alt="image-20251231220958403" style="zoom:25%;" />
+<p>​	当然看看后面有没有机会去吧！真想再去一次，不过，注意防晒，博主被晒伤了😭</p>
+<p>​	第二个就是博主现在在的城市——南京。不过还没逛，这几周有点忙，元旦打算去逛逛。</p>
+<h2 id="wei-lai">未来</h2>
+<p>​	总结一下顺便寄语几句给2026年的自己吧，总的来说这一年还是干了不少事的，也学到了很多，很感谢自己和这一路遇到的人，希望自己2026年可以顺顺利利吧！</p>
+<p>​	最后，新年快乐！！！</p>
+
+  </main>
+  <section class="article-action-block">
+    <!-- AddToAny BEGIN -->
+    <div class="addtoany-block">
+      <a
+        href="https://www.addtoany.com/share#url=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;title=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img class="button" src="https://static.addtoany.com/buttons/a2a.svg"
+      /></a>
+      <a
+        href="https://www.addtoany.com/add_to/mastodon?linkurl=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;linkname=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img
+          class="button"
+          src="https://static.addtoany.com/buttons/mastodon.svg"
+      /></a>
+      <a
+        href="https://www.addtoany.com/add_to/telegram?linkurl=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;linkname=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img
+          class="button"
+          src="https://static.addtoany.com/buttons/telegram.svg"
+      /></a>
+      <a
+        href="https://www.addtoany.com/add_to/twitter?linkurl=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;linkname=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img
+          class="button"
+          src="https://static.addtoany.com/buttons/twitter.svg"
+      /></a>
+      <a
+        href="https://www.addtoany.com/add_to/facebook?linkurl=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;linkname=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img
+          class="button"
+          src="https://static.addtoany.com/buttons/facebook.svg"
+      /></a>
+      <a
+        href="https://www.addtoany.com/add_to/line?linkurl=https:&#x2F;&#x2F;blog.sanhuzhen.top&#x2F;posts&#x2F;2025nian-zong-jie&#x2F;&amp;linkname=2025年总结"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        ><img class="button" src="https://static.addtoany.com/buttons/line.svg"
+      /></a>
+    </div>
+    <!-- AddToAny END -->
+    
+  </section>
+  <br />
+</article>
+
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="footer-content">
+        <span>Based on theme <a href="https://github.com/Resorie/zola-theme-nivis">Nivis</a><span class="separator">/</span>Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var mask = document.getElementById("sidebar-mask");
+      sidebar.classList.toggle("open");
+      mask.classList.toggle("open");
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (body.getAttribute("data-theme") === "dark") {
+        body.setAttribute("data-theme", "light");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light");
+      } else {
+        body.setAttribute("data-theme", "dark");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark");
+      }
+    }
+
+    // Initialize theme
+    (function() {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.body.setAttribute("data-theme", "dark");
+        // Icon update will happen after DOM load if we put this script at the end, 
+        // but since this is inline at the end of body, we might need to wait for DOMContentLoaded if the icon isn't ready?
+        // Actually, this script is at the end of body, so elements should be parsed.
+        const icon = document.getElementById("theme-icon");
+        if (icon) {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        }
+      }
+    })();
+
+    // Footnote Navigation
+    document.addEventListener("DOMContentLoaded", function() {
+        // Code Block Language Label
+        document.querySelectorAll('pre code').forEach(code => {
+            const pre = code.parentElement;
+            if (!pre.hasAttribute('data-lang')) {
+                const classes = code.className.split(' ');
+                for (const cls of classes) {
+                    if (cls.startsWith('language-')) {
+                        pre.setAttribute('data-lang', cls.replace('language-', ''));
+                        break;
+                    }
+                }
+            }
+        });
+    });
+  </script>
+
+  <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+</body>
+
+</html>

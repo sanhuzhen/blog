@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>sanhuzhen&#x27;s blog</title>
+	<subtitle>sanhuzhen&#x27;s blog</subtitle>
+	<link href="https://blog.sanhuzhen.top/atom.xml" rel="self" type="application/atom+xml"/>
+	<link href="https://blog.sanhuzhen.top"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-12-31T00:00:00+00:00</updated>
+	<id>https://blog.sanhuzhen.top/atom.xml</id>
+	<entry xml:lang="en">
+		<title>2025年总结</title>
+		<published>2025-12-31T00:00:00+00:00</published>
+		<updated>2025-12-31T00:00:00+00:00</updated>
+		<link href="https://blog.sanhuzhen.top/posts/2025nian-zong-jie/" type="text/html"/>
+		<id>https://blog.sanhuzhen.top/posts/2025nian-zong-jie/</id>
+		<summary>2025年总结</summary>
+		
+	</entry>
+	<entry xml:lang="en">
+		<title>Jetpack介绍</title>
+		<published>2025-03-26T00:00:00+00:00</published>
+		<updated>2025-03-26T00:00:00+00:00</updated>
+		<link href="https://blog.sanhuzhen.top/posts/jetpackde-shi-yong/" type="text/html"/>
+		<id>https://blog.sanhuzhen.top/posts/jetpackde-shi-yong/</id>
+		<summary>Jetpack介绍</summary>
+		
+	</entry>
+	<entry xml:lang="en">
+		<title>rust的基本语法</title>
+		<published>2024-11-01T00:00:00+00:00</published>
+		<updated>2024-11-01T00:00:00+00:00</updated>
+		<link href="https://blog.sanhuzhen.top/posts/rustde-ji-chu-yu-fa/" type="text/html"/>
+		<id>https://blog.sanhuzhen.top/posts/rustde-ji-chu-yu-fa/</id>
+		<summary>rust的基本语法</summary>
+		
+	</entry>
+</feed>
