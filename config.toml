@@ -52,7 +52,6 @@ github_alerts = true
 bottom_footnotes = true
 render_emoji = true
 
-extra_syntaxes = ["syntaxes"]
 
 [extra]
 main_section = "posts"
