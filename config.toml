@@ -51,10 +51,6 @@ smart_punctuation = true
 github_alerts = true
 bottom_footnotes = true
 
-[markdown.highlighting]
-extra_syntaxes = ["syntaxes"]
-
-
 [extra]
 main_section = "posts"
 math_display = "mathjax"
