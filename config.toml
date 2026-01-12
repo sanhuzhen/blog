@@ -45,11 +45,11 @@ build_search_index = false
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_theme = "css"
+render_emoji = true
+smart_punctuation = true
 
 github_alerts = true
 bottom_footnotes = true
-render_emoji = true
 
 [markdown.highlighting]
 extra_syntaxes = ["syntaxes"]
