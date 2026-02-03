@@ -31,6 +31,10 @@
         <lastmod>2024-11-01</lastmod>
     </url>
     <url>
+        <loc>https://blog.sanhuzhen.top/posts/xie-cheng/</loc>
+        <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
         <loc>https://blog.sanhuzhen.top/tags/</loc>
     </url>
     <url>
@@ -46,6 +50,12 @@
         <loc>https://blog.sanhuzhen.top/tags/jetpack/page/1/</loc>
     </url>
     <url>
+        <loc>https://blog.sanhuzhen.top/tags/kotlin/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/kotlin/page/1/</loc>
+    </url>
+    <url>
         <loc>https://blog.sanhuzhen.top/tags/nian-du-zong-jie/</loc>
     </url>
     <url>
@@ -56,5 +66,11 @@
     </url>
     <url>
         <loc>https://blog.sanhuzhen.top/tags/rust/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/xie-cheng/</loc>
+    </url>
+    <url>
+        <loc>https://blog.sanhuzhen.top/tags/xie-cheng/page/1/</loc>
     </url>
 </urlset>

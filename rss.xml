@@ -7,7 +7,320 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://blog.sanhuzhen.top/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>协程</title>
+          <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.sanhuzhen.top/posts/xie-cheng/</link>
+          <guid>https://blog.sanhuzhen.top/posts/xie-cheng/</guid>
+          <description xml:base="https://blog.sanhuzhen.top/posts/xie-cheng/">&lt;ol&gt;
+&lt;li&gt;轻量：占用内存少&lt;&#x2F;li&gt;
+&lt;li&gt;减少回调：以同步的方式执行异步代码（会将函数挂起等待结果）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;zhuang-tai-ji-yuan-li&quot;&gt;状态机原理&lt;&#x2F;h1&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;suspend fun getData(): String {
+    delay(1000)
+    return &amp;quot;hello coroutines&amp;quot;
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;反编译&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Java&quot;&gt;&#x2F;&#x2F; suspend挂起函数，会主动在方法中添加Continuation类型参数
+@Nullable
+public final Object getData(@NotNull Continuation $completion) {
+    Continuation $continuation;
+    label20: {
+        &#x2F;**
+​         * 如果传入的Continuation是&amp;lt;undefinedtype&amp;gt;类型，说明是第一次调用
+​         * 如果不是，则说明是恢复调用，从$continuation中获取状态机的状态
+​         *&#x2F;
+​        ​if ($completion instanceof &amp;lt;undefinedtype&amp;gt;) {
+            $continuation = (&amp;lt;undefinedtype&amp;gt;)$completion;
+            if (($continuation.label &amp;amp; Integer.MIN_VALUE) != 0) {
+                $continuation.label -= Integer.MIN_VALUE;
+                break label20;
+            }
+        }
+
+        $continuation = new ContinuationImpl($completion) {
+            &#x2F;&#x2F; $FF: synthetic field
+            Object result; &#x2F;&#x2F; 存储中间结果
+            int label; &#x2F;&#x2F; 标签状态
+
+            &#x2F;&#x2F; 自己invoke方法，实现状态机恢复逻辑
+            @Nullable
+            public final Object invokeSuspend(@NotNull Object $result) {
+                this.result = $result;
+                this.label |= Integer.MIN_VALUE;
+                return MainActivity.this.getData((Continuation)this);
+            }
+        };
+    }
+    
+    &#x2F;&#x2F; 开始执行逻辑
+    Object $result = $continuation.result;
+    Object var4 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
+    &#x2F;&#x2F; 根据continuation的标签位，进行对应的操作
+    switch ($continuation.label) {
+        case 0:
+            &#x2F;&#x2F; 检查结果是否是异常，如果是则抛出
+            ResultKt.throwOnFailure($result);
+            &#x2F;&#x2F; 设置下一个标签
+            $continuation.label = 1;
+            &#x2F;&#x2F; 执行delay挂起操作，delay操作里面会执行continuation.resumeWith(Result.success(Unit))操作，这里会调用continuation的invokeSuspend方法
+            if (DelayKt.delay(1000L, $continuation) == var4) {
+                return var4;
+            }
+            break;
+        case 1:
+            &#x2F;&#x2F; 继续检查，无误跳出switch，执行后续逻辑
+            ResultKt.throwOnFailure($result);
+            break;
+        default:
+            throw new IllegalStateException(&amp;quot;call to &amp;#39;resume&amp;#39; before &amp;#39;invoke&amp;#39; with coroutine&amp;quot;);
+    }
+
+    return &amp;quot;hello coroutines&amp;quot;;
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;上述操作被称为挂起函数的CSP操作&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;协程依赖于底层&lt;&#x2F;strong&gt;​&lt;strong&gt;的状态机实现挂起和恢复，当遇到挂起点时，会去将当前协程挂起，并更新其内部的状态，将&lt;code&gt;continuation&lt;&#x2F;code&gt;&lt;strong&gt;​&lt;&#x2F;strong&gt;的&lt;code&gt;label&lt;&#x2F;code&gt;&lt;strong&gt;​&lt;&#x2F;strong&gt;标签设置为下一个要执行的&lt;&#x2F;strong&gt;​&lt;strong&gt;代码块编号，当要恢复的时候，协程内部会调用&lt;&#x2F;strong&gt;​**&lt;code&gt;continuation&lt;&#x2F;code&gt;的&lt;strong&gt;​&lt;&#x2F;strong&gt;&lt;code&gt;resumWith&lt;&#x2F;code&gt;方法，去恢复协程运行，状态机根据保存的label值跳转到对应位置继续执行后续代码。**&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;gua-qi-han-shu&quot;&gt;挂起函数&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;delay&quot;&gt;delay&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;delay(1000)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;挂起1s&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;public suspend fun delay(timeMillis: Long) {
+    if (timeMillis &amp;lt;= 0) return &#x2F;&#x2F; don&amp;#39;t delay
+    return suspendCancellableCoroutine sc@ { ​cont: CancellableContinuation&amp;lt;Unit&amp;gt; -&amp;gt;
+​        ​&#x2F;&#x2F; if timeMillis == Long.MAX_VALUE then just wait forever like awaitCancellation, don&amp;#39;t schedule.
+        if (timeMillis &amp;lt; Long.MAX_VALUE) {
+            cont.context.delay.scheduleResumeAfterDelay(timeMillis, cont)
+        }
+    }
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;withcontext&quot;&gt;withContext&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;withContext(Dispatchers.IO) {
+​    ​
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;切换协程执行上下文（改变其运行的线程）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;asynche-await&quot;&gt;async和await&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;val dataDeferred = GlobalScope.async {
+    &amp;quot;xxx&amp;quot;
+}
+val data = dataDeferred .await()
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;开启并发协程并获取结果&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;launch&quot;&gt;launch&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;GlobalScope.launch ​{
+​    ​
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;并不是传统的挂起函数，可以设置协程上下文，以及协程启动方式&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;协程上下文&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dispatchers.Main：Android专属，主线程，协程代码通过封装成Runnable执行&lt;&#x2F;li&gt;
+&lt;li&gt;Dispatchers.IO：IO密集，网络请求，数据库操作，文件读取等IO操作&lt;&#x2F;li&gt;
+&lt;li&gt;Dispatchers.Default：CPU密集，如大量计算，处理数据（注意：不能放到IO里面，会阻塞网络请求）&lt;&#x2F;li&gt;
+&lt;li&gt;Dispatchers.Unconfined：纯挂起逻辑、无耗时的协程调度&lt;&#x2F;li&gt;
+&lt;li&gt;Dispatchers.Main.immediate：Android专属，主线程内的挂起后立即执行逻辑&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;注意：协程中唯一推荐的切换上下文的方法就是&lt;code&gt;withContext&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;协程的启动方式&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;DEFAULT - 立即调度&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;launch(start = CoroutineStart.DEFAULT) {
+    &#x2F;&#x2F; 创建后立即进入调度队列
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;em&gt;LAZY - 懒启动&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;val job = launch(start = CoroutineStart.LAZY) {
+    &#x2F;&#x2F; 需要手动启动
+}
+job.start()  &#x2F;&#x2F; 启动协程，进入 ACTIVE 状态
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;&lt;em&gt;ATOMIC - 原子启动（不可取消）&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;launch(start = CoroutineStart.ATOMIC) {
+    &#x2F;&#x2F; 启动后立即执行，不可取消
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;&lt;em&gt;UNDISPATCHED - 立即在当前线程执行&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;launch(start = CoroutineStart.UNDISPATCHED) {
+    &#x2F;&#x2F; 立即在当前线程执行，直到第一个挂起点
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;runblocking&quot;&gt;runBlocking&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;runBlocking ​{
+
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;阻塞线程的挂起函数&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;sheng-ming-zhou-qi&quot;&gt;生命周期&lt;&#x2F;h1&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Plain&quot;&gt;New (新建) → Active (活跃) → Completing (完成中) → Completed (已完成)
+                ↓
+            Cancelling (取消中) → Cancelled (已取消)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;JavaScript&quot;&gt;suspend fun getData() {
+    val job = CoroutineScope(Dispatchers.IO).launch(
+        &#x2F;&#x2F; 懒启动
+        start = CoroutineStart.LAZY
+​    ​) {
+​        ​Log.d(TAG, &amp;quot;getData() is running...&amp;quot; + Thread.currentThread().name)
+    }
+
+​    ​&#x2F;&#x2F; 来启动协程，此时其状态为NEW
+
+    val job1 = CoroutineScope(Dispatchers.IO).launch​ ​{
+​        ​&#x2F;&#x2F; 处于ACTIVE状态
+        Log.d(TAG, &amp;quot;getData() is running...&amp;quot; + Thread.currentThread().name)
+
+        delay(1000) &#x2F;&#x2F; 挂起点，仍然处于ACTIVE状态
+
+        Log.d(TAG, &amp;quot;getData() is running...&amp;quot; + Thread.currentThread().name)
+
+        &#x2F;&#x2F; 如果没有异常和取消，进入 COMPLETING状态
+    }
+
+​    ​val job2 = CoroutineScope(Dispatchers.IO).launch​ ​{
+​        ​try {
+            repeat(100) { ​i -&amp;gt;
+​                ​Log.d(TAG, &amp;quot;job: I am $i&amp;quot;)
+                delay(500)
+            }
+​        ​} finally {
+            &#x2F;&#x2F; 协程取消仍然会执行
+            Log.d(TAG, &amp;quot;job: I am running finally&amp;quot;)
+
+            withContext(NonCancellable) {
+​                ​delay(1000)
+            }
+​        ​}
+    }
+
+​    ​delay(1300)
+    job2.cancel() &#x2F;&#x2F; 取消协程，进入 CANCELING 状态
+    job2.join() &#x2F;&#x2F; 等待协程结束，进入 CANCELLED 状态
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zhuang-tai-jian-ting&quot;&gt;状态监听&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;val job = launch ​{
+​    ​&#x2F;&#x2F; 协程执行
+}
+
+&#x2F;&#x2F; 1. 监听完成
+job.invokeOnCompletion { ​cause -&amp;gt;
+​    ​println(&amp;quot;协程完成，原因: $cause&amp;quot;)
+}
+
+&#x2F;&#x2F; 2. 检查状态
+println(&amp;quot;是否活跃: ${job.isActive}&amp;quot;)
+println(&amp;quot;是否完成: ${job.isCompleted}&amp;quot;)
+println(&amp;quot;是否取消: ${job.isCancelled}&amp;quot;)
+
+&#x2F;&#x2F; 3. 等待完成
+runBlocking ​{
+​    ​job.join()  &#x2F;&#x2F; 挂起直到协程完成
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;xie-cheng-zuo-yong-yu&quot;&gt;协程作用域&lt;&#x2F;h1&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;@Suppress(&amp;quot;FunctionName&amp;quot;)
+public fun CoroutineScope(context: CoroutineContext): CoroutineScope =
+    ContextScope(if (context[Job] != null) context else context + Job())
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;定义协程的生命周期以及执行的上下文&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;生命周期管理：作用域取消时，内部所有协程自动取消&lt;&#x2F;li&gt;
+&lt;li&gt;结构化并发：组织协程的父子关系&lt;&#x2F;li&gt;
+&lt;li&gt;上下文传播：提供默认的调度器、异常处理器等&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;globalscope&quot;&gt;GlobalScope&lt;&#x2F;h2&gt;
+&lt;p&gt;生命周期与应用一样，尽量避免使用，容易造成内存泄漏&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mainscope&quot;&gt;MainScope&lt;&#x2F;h2&gt;
+&lt;p&gt;用于非Android环境的主线程作用域&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;private val scope = MainScope()  &#x2F;&#x2F; ​Dispatchers.Main + SupervisorJob()
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;viewmodelscope&quot;&gt;ViewModelScope&lt;&#x2F;h2&gt;
+&lt;p&gt;适用于viewmodel的作用域&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;implementation(&amp;quot;androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;viewModelScope.launch ​{
+​    ​&#x2F;&#x2F; 里面的内容会随着viewmodel被clear而取消
+}
+
+class MainViewModel: ViewModel() {
+    val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    
+    &#x2F;&#x2F; 如果要自定义的话，记得取消作用域
+    override fun onCleared() {
+        super.onCleared()
+        scope.cancel()
+    }
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;lifecyclescope&quot;&gt;LifecycleScope&lt;&#x2F;h2&gt;
+&lt;p&gt;适用于activity的作用域&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;implementation(&amp;quot;androidx.lifecycle:lifecycle-runtime-ktx:2.8.0&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;lifecycleScope.launch ​{
+​    ​&#x2F;&#x2F; 里面的内容会随着activity被destory而取消
+}
+
+&#x2F;&#x2F; 以下方法在生命周期离开对应状态时会挂起协程
+lifecycleScope.launchWhenCreated { }   &#x2F;&#x2F; CREATED状态
+lifecycleScope.launchWhenStarted { }   &#x2F;&#x2F; STARTED状态  ​
+lifecycleScope.launchWhenResumed { }   &#x2F;&#x2F; RESUMED状态
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zi-ding-yi-scope&quot;&gt;自定义Scope&lt;&#x2F;h2&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Kotlin&quot;&gt;class MyCustomScope : CoroutineScope {
+    private val job = SupervisorJob()
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job + CoroutineName(&amp;quot;MyScope&amp;quot;)
+
+    fun cleanup() {
+        job.cancel()  &#x2F;&#x2F; 取消所有子协程
+    }
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;supervisorjob-vs-job&quot;&gt;SupervisorJob vs Job&lt;&#x2F;h3&gt;
+&lt;pre&gt;&lt;code data-lang=&quot;Java&quot;&gt;&#x2F;&#x2F; 1. 使用 Job（默认）- 子协程异常会传播
+val scope1 = CoroutineScope(Job() + Dispatchers.Main)
+scope1.launch {
+    launch ​{
+​        ​throw Exception()  &#x2F;&#x2F; 会取消父协程和其他子协程
+    }
+​    ​launch ​{
+​        ​delay(1000)  &#x2F;&#x2F; 这个不会执行，因为被异常取消了
+    }
+}
+
+&#x2F;&#x2F; 2. 使用 SupervisorJob - 子协程异常隔离
+val scope2 = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+scope2.launch {
+    launch ​{
+​        ​throw Exception()  &#x2F;&#x2F; 只影响自己
+    }
+​    ​launch ​{
+​        ​delay(1000)  &#x2F;&#x2F; 这个正常执行
+        println(&amp;quot;我还活着&amp;quot;)
+    }
+}
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</description>
+      </item>
       <item>
           <title>2025年总结</title>
           <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
