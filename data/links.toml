@@ -3,6 +3,7 @@ name = "Friends"
 items = [
     # Add your friends here
     # { name = "Resory's blog", url = "https://resorie.github.io/blog/", description = "Runtime Error", avatar = "https://avatars.githubusercontent.com/u/49238603" },
+    { name = "从不玩原神", url = "https://1822128652.github.io/", description = "未来的92✌", avatar = "https://avatars.githubusercontent.com/u/169779074?v=4&size=64" },
 ]
 desc = "My Friends"
 
